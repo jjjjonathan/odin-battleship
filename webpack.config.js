@@ -13,6 +13,7 @@ module.exports = {
   devServer: {
     contentBase: './dist',
     open: 'Google Chrome',
+    port: 8081,
   },
   output: {
     filename: 'bundle.js',
