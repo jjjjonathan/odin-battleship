@@ -11,7 +11,7 @@ Intro.render();
 const board = Gameboard();
 console.log(board.ships);
 
-board.placeShip(1, 1, 1, 'X');
+board.placeShip(2, 2, 2, 'Y');
 
 console.log('_________');
 console.log(board.ships[0]);
