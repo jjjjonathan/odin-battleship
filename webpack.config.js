@@ -12,8 +12,7 @@ module.exports = {
   devtool: 'inline-source-map',
   devServer: {
     contentBase: './dist',
-    open: 'Google Chrome',
-    port: 8081,
+    port: 8082,
   },
   output: {
     filename: 'bundle.js',
