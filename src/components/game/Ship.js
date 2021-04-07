@@ -1,6 +1,8 @@
 const Ship = (length) => {
   const ship = Array(length).fill(false);
 
+  const getHits = () => ship;
+
   const hit = (hitLocation) => {
     if (hitLocation >= ship.length) {
       throw new Error('Hit is outside of ship bounds');
@@ -13,7 +15,7 @@ const Ship = (length) => {
 
   const isSunk = () => !ship.includes(false);
 
-  return { length, hit, isSunk };
+  return { length, getHits, hit, isSunk };
 };
 
 export default Ship;
