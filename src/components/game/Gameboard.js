@@ -3,6 +3,7 @@ import getPerimeter from './getPerimeter';
 
 const Gameboard = () => {
   const ships = [];
+  const misses = [];
 
   const getAllCoordsFromShip = (ship) => {
     let coords = [];
@@ -20,6 +21,32 @@ const Gameboard = () => {
     }
 
     return coords;
+  };
+
+  const findShipIndexByCoords = (coords) => {
+    for (let i = 0; i < ships.length; i++) {
+      const allCoords = getAllCoordsFromShip(ships[i]);
+      const stringifiedCoords = allCoords.map((coord) => {
+        return JSON.stringify(coord);
+      });
+      const stringifiedFindCoords = JSON.stringify(coords);
+      console.log(stringifiedCoords, stringifiedFindCoords);
+      if (stringifiedCoords.includes(stringifiedFindCoords)) {
+        return i;
+      }
+    }
+  };
+
+  const findPositionOnShipByCoords = (
+    shipStartCoords,
+    shipDirection,
+    positionCoords
+  ) => {
+    if (shipDirection === 'X') {
+      return positionCoords[0] - shipStartCoords[0];
+    } else if (shipDirection === 'Y') {
+      return positionCoords[1] - shipStartCoords[1];
+    }
   };
 
   const getAllShipCoordsOnBoard = () => {
@@ -52,16 +79,32 @@ const Gameboard = () => {
 
     if (stringifiedCoords.includes(stringifiedAttackCoords)) {
       console.log('hit!');
+      const hitShipIndex = findShipIndexByCoords(attackCoords);
+      const hitShip = ships[hitShipIndex];
+      const positionOnShip = findPositionOnShipByCoords(
+        [hitShip.x, hitShip.y],
+        hitShip.dir,
+        attackCoords
+      );
+      hitShip.hit(positionOnShip);
     } else {
       console.log('nope!');
+      misses.push(attackCoords);
     }
+  };
+
+  const allSunk = () => {
+    return ships.every((ship) => ship.isSunk());
   };
 
   return {
     ships,
+    misses,
     getPerimeter,
     placeShip,
     receiveAttack,
+    findShipIndexByCoords,
+    allSunk,
   };
 };
 

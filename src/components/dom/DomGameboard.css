@@ -1,0 +1,14 @@
+.gameboard {
+  width: 600px;
+  height: 600px;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-gap: 1px;
+  background-color: white;
+}
+
+.tile {
+  background-color: black;
+  text-align: center;
+  padding-top: 10px;
+}
