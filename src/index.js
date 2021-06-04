@@ -10,7 +10,7 @@ Intro.render();
 DomGameboard.render();
 
 const board = Gameboard();
-console.log(board.ships);
+console.log('ships', board.getShips());
 
 // board.placeShip(2, 2, 2, 'Y');
 board.placeShip(1, 4, 2, 'X');

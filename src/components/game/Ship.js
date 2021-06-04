@@ -15,7 +15,12 @@ const Ship = (length) => {
 
   const isSunk = () => !ship.includes(false);
 
-  return { length, getHits, hit, isSunk };
+  return {
+    length,
+    getHits,
+    hit,
+    isSunk,
+  };
 };
 
 export default Ship;

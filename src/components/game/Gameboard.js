@@ -5,6 +5,9 @@ const Gameboard = () => {
   const ships = [];
   const misses = [];
 
+  const getShips = () => ships;
+  const getMisses = () => misses;
+
   const getAllCoordsFromShip = (ship) => {
     let coords = [];
 
@@ -98,8 +101,8 @@ const Gameboard = () => {
   };
 
   return {
-    ships,
-    misses,
+    getShips,
+    getMisses,
     getPerimeter,
     placeShip,
     receiveAttack,
